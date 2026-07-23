@@ -1,0 +1,55 @@
+<div class="filtros">
+  <select [(ngModel)]="filtroStatus" (change)="carregar()">
+    <option value="">Todos os status</option>
+    <option *ngFor="let s of todosStatus" [value]="s">{{ statusLabels[s] }}</option>
+  </select>
+
+  <input
+    type="text"
+    placeholder="Buscar por empresa..."
+    [(ngModel)]="filtroEmpresa"
+    (keyup.enter)="carregar()"
+  />
+
+  <button (click)="carregar()">Filtrar</button>
+  <button class="secundario" (click)="limparFiltros()">Limpar</button>
+</div>
+
+<div *ngIf="carregando" class="estado">Carregando...</div>
+<div *ngIf="erro" class="estado erro">{{ erro }}</div>
+
+<div *ngIf="!carregando && !erro">
+  <div *ngIf="vagas.length === 0" class="estado">
+    Nenhuma candidatura encontrada. <a routerLink="/nova">Cadastre a primeira!</a>
+  </div>
+
+  <table *ngIf="vagas.length > 0" class="tabela">
+    <thead>
+      <tr>
+        <th>Empresa</th>
+        <th>Cargo</th>
+        <th>Modalidade</th>
+        <th>Data</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vaga of vagas">
+        <td class="empresa">{{ vaga.empresa }}</td>
+        <td>{{ vaga.cargo }}</td>
+        <td>{{ vaga.modalidade || '-' }}</td>
+        <td>{{ vaga.dataAplicacao | date:'dd/MM/yyyy' }}</td>
+        <td>
+          <span class="badge" [style.background]="corDoStatus(vaga.status)">
+            {{ statusLabels[vaga.status] }}
+          </span>
+        </td>
+        <td class="acoes">
+          <a [routerLink]="['/editar', vaga.id]" class="btn-icone">✏️</a>
+          <button class="btn-icone" (click)="excluir(vaga)">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

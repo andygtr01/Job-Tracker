@@ -1,0 +1,80 @@
+<div class="card">
+  <h2>{{ modoEdicao ? 'Editar candidatura' : 'Nova candidatura' }}</h2>
+
+  <div *ngIf="erro" class="alerta">{{ erro }}</div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="linha">
+      <div class="campo">
+        <label>Empresa *</label>
+        <input type="text" formControlName="empresa" placeholder="Ex: Nubank" />
+        <span class="erro-campo" *ngIf="form.get('empresa')?.invalid && form.get('empresa')?.touched">
+          Campo obrigatório
+        </span>
+      </div>
+
+      <div class="campo">
+        <label>Cargo *</label>
+        <input type="text" formControlName="cargo" placeholder="Ex: Desenvolvedor Full Stack" />
+        <span class="erro-campo" *ngIf="form.get('cargo')?.invalid && form.get('cargo')?.touched">
+          Campo obrigatório
+        </span>
+      </div>
+    </div>
+
+    <div class="linha">
+      <div class="campo">
+        <label>Link da vaga</label>
+        <input type="url" formControlName="link" placeholder="https://..." />
+      </div>
+
+      <div class="campo">
+        <label>Localização</label>
+        <input type="text" formControlName="localizacao" placeholder="Ex: São Paulo, SP" />
+      </div>
+    </div>
+
+    <div class="linha">
+      <div class="campo">
+        <label>Modalidade</label>
+        <select formControlName="modalidade">
+          <option value="">Selecione</option>
+          <option value="Remoto">Remoto</option>
+          <option value="Híbrido">Híbrido</option>
+          <option value="Presencial">Presencial</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Salário pretendido (R$)</label>
+        <input type="number" formControlName="salarioPretendido" placeholder="Ex: 8000" />
+      </div>
+    </div>
+
+    <div class="linha">
+      <div class="campo">
+        <label>Data da aplicação *</label>
+        <input type="date" formControlName="dataAplicacao" />
+      </div>
+
+      <div class="campo">
+        <label>Status *</label>
+        <select formControlName="status">
+          <option *ngFor="let s of todosStatus" [value]="s">{{ statusLabels[s] }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>Observações</label>
+      <textarea formControlName="observacoes" rows="4" placeholder="Anotações sobre o processo, contatos, feedback recebido..."></textarea>
+    </div>
+
+    <div class="acoes-form">
+      <button type="button" class="secundario" (click)="cancelar()">Cancelar</button>
+      <button type="submit" [disabled]="salvando">
+        {{ salvando ? 'Salvando...' : 'Salvar' }}
+      </button>
+    </div>
+  </form>
+</div>
