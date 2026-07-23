@@ -8,4 +8,4 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/job-tracker-1.0.0.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-Xmx256m", "-XX:+UseSerialGC", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Xmx256m", "-jar", "app.jar"]
