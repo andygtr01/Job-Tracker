@@ -76,7 +76,7 @@ export class VagaFormComponent implements OnInit {
       next: () => this.router.navigate(['/']),
       error: (err) => {
         if (err.status === 403) {
-          this.erro = 'Este é um ambiente de demonstração pública — criação e edição estão desabilitadas aqui.';
+          this.erro = 'Este é um ambiente de demonstração pública. Para preservar os dados de exemplo, criação e edição foram desabilitadas intencionalmente pelo autor. Sinta-se à vontade para clonar o projeto no GitHub e testar todas as funcionalidades.';
         } else {
           this.erro = 'Erro ao salvar a candidatura. Verifique os dados e tente novamente.';
         }
