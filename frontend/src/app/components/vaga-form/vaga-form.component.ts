@@ -72,17 +72,17 @@ export class VagaFormComponent implements OnInit {
       ? this.vagaService.atualizar(this.vagaId, dados)
       : this.vagaService.criar(dados);
 
-    acao.subscribe({
-  next: () => this.router.navigate(['/']),
-  error: (err) => {
-    if (err.status === 403) {
-      this.erro = 'Este é um ambiente de demonstração pública — criação e edição estão desabilitadas aqui.';
-    } else {
-      this.erro = 'Erro ao salvar a candidatura. Verifique os dados e tente novamente.';
-    }
-    this.salvando = false;
-  }
-});
+   acao.subscribe({
+      next: () => this.router.navigate(['/']),
+      error: (err) => {
+        if (err.status === 403) {
+          this.erro = 'Este é um ambiente de demonstração pública — criação e edição estão desabilitadas aqui.';
+        } else {
+          this.erro = 'Erro ao salvar a candidatura. Verifique os dados e tente novamente.';
+        }
+        this.salvando = false;
+      }
+    });
   }
 
   cancelar(): void {
