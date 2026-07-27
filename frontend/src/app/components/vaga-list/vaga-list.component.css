@@ -9,7 +9,9 @@
 .filtros input {
   padding: 8px 12px;
   border-radius: 8px;
-  border: 1px solid #d6d9e0;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-primary);
   font-size: 0.9rem;
 }
 
@@ -28,15 +30,15 @@
 }
 
 .filtros button.secundario {
-  background: #e4e6ec;
-  color: #1f2430;
+  background: var(--filtro-secundario-bg);
+  color: var(--text-primary);
 }
 
 .estado {
   padding: 40px;
   text-align: center;
-  color: #6b7280;
-  background: white;
+  color: var(--text-secondary);
+  background: var(--bg-card);
   border-radius: 12px;
 }
 
@@ -47,7 +49,7 @@
 .tabela {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: var(--bg-card);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
@@ -56,21 +58,32 @@
 .tabela th {
   text-align: left;
   padding: 14px 16px;
-  background: #f0f1f5;
+  background: var(--table-header-bg);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .tabela td {
   padding: 14px 16px;
-  border-top: 1px solid #eef0f3;
+  border-top: 1px solid var(--border-color);
   font-size: 0.92rem;
+  color: var(--text-primary);
 }
 
 .tabela .empresa {
   font-weight: 600;
+}
+
+.empresa-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.empresa-link:hover {
+  opacity: 0.7;
 }
 
 .badge {

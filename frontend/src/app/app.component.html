@@ -1,7 +1,12 @@
 <header class="topbar">
   <div class="topbar-inner">
     <a routerLink="/" class="logo">📋 Job Tracker</a>
+    <div class="topbar-acoes">
+      <button class="btn-tema" (click)="alternarTema()" [attr.aria-label]="temaEscuro ? 'Ativar modo claro' : 'Ativar modo escuro'">
+        {{ temaEscuro ? '☀️' : '🌙' }}
+      </button>
     <a routerLink="/nova" class="btn-nova">+ Nova candidatura</a>
+    </div>
   </div>
 </header>
 

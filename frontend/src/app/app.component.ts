@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
@@ -8,6 +8,23 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   titulo = 'Job Tracker';
+  temaEscuro = false;
+
+  ngOnInit(): void {
+    const salvo = localStorage.getItem('temaEscuro');
+    this.temaEscuro = salvo === 'true';
+    this.aplicarTema();
+  }
+
+  alternarTema(): void {
+    this.temaEscuro = !this.temaEscuro;
+    localStorage.setItem('temaEscuro', String(this.temaEscuro));
+    this.aplicarTema();
+  }
+
+  private aplicarTema(): void {
+    document.body.classList.toggle('tema-escuro', this.temaEscuro);
+  }
 }

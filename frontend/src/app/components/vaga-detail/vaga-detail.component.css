@@ -1,0 +1,128 @@
+.estado {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border-radius: 12px;
+}
+
+.estado.erro {
+  color: #e74c3c;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.cabecalho h2 {
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.empresa {
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.badge {
+  color: white;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-largo {
+  grid-column: 1 / -1;
+}
+
+.rotulo {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.valor {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.link {
+  color: #4f7cff;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.observacoes {
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.texto-observacoes {
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.acoes-detalhe {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.acoes-detalhe button,
+.acoes-detalhe a {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.acoes-detalhe .secundario {
+  background: var(--filtro-secundario-bg);
+  color: var(--text-primary);
+}
+
+.acoes-detalhe .btn-editar {
+  background: #4f7cff;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+}

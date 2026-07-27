@@ -36,8 +36,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let vaga of vagas">
-        <td class="empresa">{{ vaga.empresa }}</td>
-        <td>{{ vaga.cargo }}</td>
+        <td class="empresa">
+          <a [routerLink]="['/vaga', vaga.id]" class="empresa-link">{{ vaga.empresa }}</a>
+        </td>
         <td>{{ vaga.modalidade || '-' }}</td>
         <td>{{ vaga.dataAplicacao | date:'dd/MM/yyyy' }}</td>
         <td>
