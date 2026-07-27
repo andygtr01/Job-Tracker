@@ -106,3 +106,61 @@
   font-size: 1rem;
   text-decoration: none;
 }
+
+@media (max-width: 640px) {
+  .filtros {
+    flex-direction: column;
+  }
+
+  .filtros input {
+    min-width: 0;
+  }
+
+  .tabela thead {
+    display: none;
+  }
+
+  .tabela, .tabela tbody, .tabela tr, .tabela td {
+    display: block;
+    width: 100%;
+  }
+
+  .tabela tr {
+    margin-bottom: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .tabela td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border-top: 1px solid var(--border-color);
+    text-align: right;
+  }
+
+  .tabela td:first-child {
+    border-top: none;
+  }
+
+  .tabela td::before {
+    content: attr(data-rotulo);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    text-align: left;
+  }
+
+  .tabela td.acoes {
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .tabela td.acoes::before {
+    content: none;
+  }
+}

@@ -36,17 +36,18 @@
     </thead>
     <tbody>
       <tr *ngFor="let vaga of vagas">
-        <td class="empresa">
+        <td class="empresa" data-rotulo="Empresa">
           <a [routerLink]="['/vaga', vaga.id]" class="empresa-link">{{ vaga.empresa }}</a>
         </td>
-        <td>{{ vaga.modalidade || '-' }}</td>
-        <td>{{ vaga.dataAplicacao | date:'dd/MM/yyyy' }}</td>
-        <td>
+        <td data-rotulo="Cargo">{{ vaga.cargo }}</td>
+        <td data-rotulo="Modalidade">{{ vaga.modalidade || '-' }}</td>
+        <td data-rotulo="Data">{{ vaga.dataAplicacao | date:'dd/MM/yyyy' }}</td>
+        <td data-rotulo="Status">
           <span class="badge" [style.background]="corDoStatus(vaga.status)">
             {{ statusLabels[vaga.status] }}
           </span>
         </td>
-        <td class="acoes">
+        <td class="acoes" data-rotulo="Ações">
           <a [routerLink]="['/editar', vaga.id]" class="btn-icone">✏️</a>
           <button class="btn-icone" (click)="excluir(vaga)">🗑️</button>
         </td>

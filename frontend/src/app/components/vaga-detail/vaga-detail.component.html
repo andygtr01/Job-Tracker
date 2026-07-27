@@ -1,0 +1,51 @@
+<div *ngIf="carregando" class="estado">Carregando...</div>
+<div *ngIf="erro" class="estado erro">{{ erro }}</div>
+
+<div *ngIf="vaga" class="card">
+  <div class="cabecalho">
+    <div>
+      <h2>{{ vaga.cargo }}</h2>
+      <p class="empresa">{{ vaga.empresa }}</p>
+    </div>
+    <span class="badge" [style.background]="corDoStatus(vaga.status)">
+      {{ statusLabels[vaga.status] }}
+    </span>
+  </div>
+
+  <div class="grade">
+    <div class="item">
+      <span class="rotulo">Data de aplicação</span>
+      <span class="valor">{{ vaga.dataAplicacao | date:'dd/MM/yyyy' }}</span>
+    </div>
+
+    <div class="item">
+      <span class="rotulo">Modalidade</span>
+      <span class="valor">{{ vaga.modalidade || '-' }}</span>
+    </div>
+
+    <div class="item">
+      <span class="rotulo">Localização</span>
+      <span class="valor">{{ vaga.localizacao || '-' }}</span>
+    </div>
+
+    <div class="item">
+      <span class="rotulo">Salário pretendido</span>
+      <span class="valor">{{ vaga.salarioPretendido ? ('R$ ' + vaga.salarioPretendido) : '-' }}</span>
+    </div>
+
+    <div class="item item-largo" *ngIf="vaga.link">
+      <span class="rotulo">Link da vaga</span>
+      <a [href]="vaga.link" target="_blank" class="valor link">{{ vaga.link }}</a>
+    </div>
+  </div>
+
+  <div class="observacoes" *ngIf="vaga.observacoes">
+    <span class="rotulo">Observações</span>
+    <p class="texto-observacoes">{{ vaga.observacoes }}</p>
+  </div>
+
+  <div class="acoes-detalhe">
+    <button class="secundario" (click)="voltar()">← Voltar</button>
+    <a [routerLink]="['/editar', vaga.id]" class="btn-editar">✏️ Editar</a>
+  </div>
+</div>
